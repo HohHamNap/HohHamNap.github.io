@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classical Violin — Complete Beginner's Course</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f0c08;
+  --parchment: #f6f1e7;
+  --warm: #faf6ee;
+  --gold: #a07828;
+  --gold-bright: #c49a30;
+  --gold-pale: #e2cfa0;
+  --gold-faint: #f0e5c8;
+  --mahogany: #5c1e08;
+  --sienna: #8b3a1a;
+  --moss: #2a3520;
+  --border: rgba(160,120,40,0.22);
+  --border-strong: rgba(160,120,40,0.45);
+  --text: #1e1508;
+  --text-mid: #4a3820;
+  --text-muted: #7a6040;
+  --shadow: rgba(15,12,8,0.08);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--parchment);
+  color: var(--text);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* Texture overlay */
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:9999; opacity:.5;
+}
+
+/* ─── SIDEBAR NAV ─── */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 230px;
+  background: var(--ink);
+  border-right: 1px solid rgba(160,120,40,0.3);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 30px 0 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  padding: 0 22px 24px;
+  border-bottom: 1px solid rgba(160,120,40,0.2);
+  margin-bottom: 20px;
+}
+
+.sidebar-logo .clef {
+  font-size: 36px;
+  color: var(--gold-bright);
+  line-height: 1;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.sidebar-logo span {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-pale);
+  opacity: 0.7;
+}
+
+.nav-phase {
+  padding: 6px 22px 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.8;
+  margin-top: 10px;
+}
+
+.nav-link {
+  display: block;
+  padding: 7px 22px;
+  font-family: 'EB Garamond', serif;
+  font-size: 13px;
+  color: rgba(246,241,231,0.55);
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+  line-height: 1.3;
+  cursor: pointer;
+  border: none;
+  background: none;
+  text-align: left;
+  width: 100%;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--gold-pale);
+  background: rgba(160,120,40,0.12);
+}
+
+/* ─── MAIN CONTENT ─── */
+.main {
+  margin-left: 230px;
+  min-height: 100vh;
+}
+
+/* ─── HERO ─── */
+.hero {
+  background: linear-gradient(160deg, var(--ink) 0%, #1e1208 60%, var(--mahogany) 100%);
+  padding: 90px 80px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '𝄞';
+  position: absolute;
+  font-size: 380px;
+  color: rgba(160,120,40,0.07);
+  right: -20px;
+  top: -60px;
+  line-height: 1;
+  pointer-events: none;
+  animation: driftClef 8s ease-in-out infinite;
+}
+
+@keyframes driftClef {
+  0%,100%{transform:translateY(0) rotate(-4deg);}
+  50%{transform:translateY(-18px) rotate(2deg);}
+}
+
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(44px, 5.5vw, 78px);
+  line-height: 1.05;
+  color: var(--parchment);
+  margin-bottom: 10px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold-bright);
+}
+
+.hero-sub {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: rgba(246,241,231,0.6);
+  max-width: 560px;
+  margin-top: 18px;
+  line-height: 1.6;
+}
+
+.hero-tags {
+  display: flex;
+  gap: 10px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+.hero-tag {
+  background: rgba(160,120,40,0.18);
+  border: 1px solid rgba(160,120,40,0.35);
+  color: var(--gold-pale);
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+}
+
+/* ─── CONTENT WRAPPER ─── */
+.content {
+  padding: 0 70px 100px;
+  max-width: 900px;
+}
+
+/* ─── INTRO BLOCK ─── */
+.intro-block {
+  padding: 60px 0 20px;
+}
+
+.intro-block h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 34px;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.intro-block p {
+  font-size: 17px;
+  color: var(--text-mid);
+  max-width: 700px;
+  margin-bottom: 14px;
+}
+
+.important-box {
+  border-left: 3px solid var(--gold);
+  background: var(--gold-faint);
+  padding: 18px 22px;
+  margin: 24px 0;
+}
+
+.important-box strong {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.important-box p {
+  font-size: 15px;
+  color: var(--text-mid);
+  margin: 0;
+}
+
+/* ─── PHASE HEADERS ─── */
+.phase-banner {
+  background: var(--ink);
+  color: var(--parchment);
+  padding: 40px 0 36px;
+  margin: 60px -70px 0;
+  padding-left: 70px;
+  padding-right: 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+.phase-banner::after {
+  content: attr(data-roman);
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 120px;
+  font-weight: 300;
+  color: rgba(160,120,40,0.12);
+  line-height: 1;
+}
+
+.phase-banner .phase-num {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 10px;
+}
+
+.phase-banner h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 42px;
+  line-height: 1.1;
+  color: var(--parchment);
+}
+
+.phase-banner .phase-meta {
+  font-style: italic;
+  color: rgba(246,241,231,0.5);
+  font-size: 15px;
+  margin-top: 8px;
+}
+
+/* ─── WEEK CARDS ─── */
+.week-card {
+  border: 1px solid var(--border);
+  background: var(--warm);
+  margin-top: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.week-card::before {
+  content:'';
+  position:absolute;
+  left:0; top:0; bottom:0;
+  width:4px;
+  background: linear-gradient(180deg, var(--gold-bright), var(--sienna));
+  opacity:0;
+  transition: opacity 0.3s;
+}
+
+.week-card.open::before { opacity:1; }
+
+.week-toggle {
+  width:100%;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding: 26px 30px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:20px;
+  text-align:left;
+  transition: background 0.2s;
+}
+
+.week-toggle:hover { background: var(--gold-faint); }
+
+.week-label-small {
+  font-family:'Cinzel',serif;
+  font-size:9px;
+  letter-spacing:0.3em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:6px;
+}
+
+.week-title-main {
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;
+  font-weight:600;
+  color:var(--ink);
+  line-height:1.15;
+}
+
+.week-subtitle {
+  font-style:italic;
+  color:var(--text-muted);
+  font-size:15px;
+  margin-top:4px;
+}
+
+.week-icon {
+  font-size:22px;
+  color:var(--gold);
+  flex-shrink:0;
+  margin-top:6px;
+  transition: transform 0.35s ease;
+  user-select:none;
+}
+
+.week-card.open .week-icon { transform: rotate(45deg); }
+
+.week-body {
+  display:none;
+  border-top: 1px solid var(--border);
+}
+
+.week-card.open .week-body { display:block; }
+
+/* ─── OVERVIEW STRIP ─── */
+.overview-strip {
+  background: var(--ink);
+  color: var(--parchment);
+  padding: 20px 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.overview-item .ov-label {
+  font-family:'Cinzel',serif;
+  font-size:8px;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:4px;
+}
+
+.overview-item .ov-value {
+  font-size:14px;
+  color: var(--gold-pale);
+  line-height:1.4;
+}
+
+/* ─── WEEK INTRO ─── */
+.week-intro {
+  padding: 24px 30px 0;
+}
+
+.week-intro p {
+  font-size:16px;
+  color:var(--text-mid);
+  max-width:680px;
+  line-height:1.7;
+}
+
+/* ─── DAILY SCHEDULE ─── */
+.schedule-header {
+  padding: 28px 30px 14px;
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.schedule-header h3 {
+  font-family:'Cinzel',serif;
+  font-size:10px;
+  letter-spacing:0.3em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+
+.schedule-header span {
+  font-style:italic;
+  font-size:14px;
+  color:var(--text-muted);
+}
+
+/* ─── PRACTICE BLOCK ─── */
+.practice-block {
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.practice-block:last-child { border-bottom: none; }
+
+.block-header {
+  padding: 18px 30px;
+  display:grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 20px;
+  align-items:start;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.block-header:hover { background: rgba(160,120,40,0.05); }
+
+.block-time {
+  font-family:'Cinzel',serif;
+  font-size:11px;
+  color:var(--gold);
+  letter-spacing:0.08em;
+  padding-top:3px;
+}
+
+.block-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;
+  font-weight:600;
+  color:var(--ink);
+  line-height:1.2;
+}
+
+.block-tagline {
+  font-style:italic;
+  font-size:14px;
+  color:var(--text-muted);
+  margin-top:2px;
+}
+
+.block-expand {
+  font-size:15px;
+  color:var(--gold);
+  opacity:.6;
+  padding-top:4px;
+  transition: transform 0.3s;
+  flex-shrink:0;
+}
+
+.practice-block.open .block-expand { transform: rotate(180deg); }
+
+.block-detail {
+  display:none;
+  padding: 0 30px 24px 160px;
+  animation: fadeIn 0.25s ease;
+}
+
+.practice-block.open .block-detail { display:block; }
+
+@keyframes fadeIn {
+  from{opacity:0;transform:translateY(-6px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ─── STEP-BY-STEP ─── */
+.step-list {
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin-bottom:16px;
+}
+
+.step-list li {
+  display:grid;
+  grid-template-columns: 28px 1fr;
+  gap:14px;
+  align-items:start;
+}
+
+.step-num {
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background: var(--ink);
+  color:var(--gold-pale);
+  font-family:'Cinzel',serif;
+  font-size:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  margin-top:2px;
+}
+
+.step-text {
+  font-size:15px;
+  color:var(--text-mid);
+  line-height:1.65;
+}
+
+.step-text strong {
+  color:var(--ink);
+  font-weight:500;
+}
+
+/* ─── WHAT TO LISTEN FOR / COMMON MISTAKES ─── */
+.callout-grid {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:14px;
+  margin-top:16px;
+}
+
+@media(max-width:700px){ .callout-grid{grid-template-columns:1fr;} }
+
+.callout {
+  padding:14px 16px;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.callout.listen {
+  background: rgba(42,53,32,0.07);
+  border-left:3px solid var(--moss);
+  color:var(--text-mid);
+}
+
+.callout.mistake {
+  background: rgba(92,30,8,0.07);
+  border-left:3px solid var(--sienna);
+  color:var(--text-mid);
+}
+
+.callout strong {
+  font-family:'Cinzel',serif;
+  font-size:8px;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  display:block;
+  margin-bottom:6px;
+}
+
+.callout.listen strong { color:var(--moss); }
+.callout.mistake strong { color:var(--sienna); }
+
+/* ─── MAESTRO NOTE ─── */
+.maestro-note {
+  background: linear-gradient(135deg, var(--ink) 0%, #2a1a08 100%);
+  color:var(--gold-pale);
+  padding:20px 24px;
+  margin-top:20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.maestro-note::before {
+  content:'"';
+  position:absolute;
+  font-family:'Cormorant Garamond',serif;
+  font-size:100px;
+  color:rgba(212,168,75,0.12);
+  top:-20px; left:8px;
+  line-height:1;
+}
+
+.maestro-note .mn-label {
+  font-family:'Cinzel',serif;
+  font-size:8px;
+  letter-spacing:0.3em;
+  text-transform:uppercase;
+  color:var(--gold-bright);
+  margin-bottom:8px;
+  position:relative;
+}
+
+.maestro-note p {
+  font-style:italic;
+  font-size:15px;
+  line-height:1.65;
+  position:relative;
+}
+
+/* ─── GOALS SECTION ─── */
+.goals-section {
+  padding: 24px 30px;
+  background: var(--gold-faint);
+  border-top: 1px solid var(--border);
+}
+
+.goals-section h4 {
+  font-family:'Cinzel',serif;
+  font-size:9px;
+  letter-spacing:0.3em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:14px;
+}
+
+.goal-list {
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.goal-list li {
+  font-size:15px;
+  color:var(--text-mid);
+  padding-left:22px;
+  position:relative;
+  line-height:1.5;
+}
+
+.goal-list li::before {
+  content:'♩';
+  position:absolute;
+  left:0;
+  color:var(--gold);
+  font-size:12px;
+  top:3px;
+}
+
+/* ─── MILESTONES ─── */
+.milestones-section {
+  margin-top:60px;
+  padding: 40px;
+  border:1px solid var(--border);
+  background:var(--warm);
+}
+
+.milestones-section h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-weight:500;
+  font-size:32px;
+  color:var(--ink);
+  margin-bottom:6px;
+}
+
+.milestones-section > p {
+  font-style:italic;
+  color:var(--text-muted);
+  font-size:15px;
+  margin-bottom:26px;
+}
+
+.milestone-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap:12px;
+}
+
+.ms-item {
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:14px;
+  border:1px solid var(--border);
+  cursor:pointer;
+  transition:background 0.2s;
+}
+
+.ms-item:hover { background: var(--gold-faint); }
+
+.ms-item input[type=checkbox] {
+  appearance:none;
+  width:18px;
+  height:18px;
+  border:1px solid var(--gold);
+  flex-shrink:0;
+  margin-top:3px;
+  cursor:pointer;
+  position:relative;
+}
+
+.ms-item input:checked { background:var(--gold); }
+
+.ms-item input:checked::after {
+  content:'✓';
+  position:absolute;
+  color:var(--warm);
+  font-size:11px;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+}
+
+.ms-text { font-size:14px; color:var(--text); line-height:1.4; }
+.ms-text small { display:block; font-style:italic; color:var(--text-muted); font-size:12px; margin-top:2px; }
+
+/* ─── EQUIPMENT ─── */
+.equip-section {
+  margin-top:40px;
+  background:var(--ink);
+  padding:40px;
+  color:var(--parchment);
+}
+
+.equip-section h2 {
+  font-family:'Cinzel',serif;
+  font-size:11px;
+  letter-spacing:0.35em;
+  text-transform:uppercase;
+  color:var(--gold-bright);
+  margin-bottom:22px;
+}
+
+.equip-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:20px;
+}
+
+.equip-item strong {
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;
+  font-weight:600;
+  color:var(--gold-pale);
+  display:block;
+  margin-bottom:6px;
+}
+
+.equip-item p { font-size:14px; color:rgba(246,241,231,0.65); line-height:1.6; }
+
+/* ─── FOOTER ─── */
+footer {
+  padding:60px 70px;
+  border-top:1px solid var(--border);
+  text-align:center;
+}
+
+.footer-quote {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,3.5vw,36px);
+  font-weight:300;
+  font-style:italic;
+  color:var(--ink);
+  max-width:580px;
+  margin:0 auto 14px;
+  line-height:1.35;
+}
+
+footer small { font-size:14px; color:var(--text-muted); }
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:860px){
+  .sidebar{display:none;}
+  .main{margin-left:0;}
+  .hero{padding:60px 30px 60px;}
+  .content{padding:0 24px 80px;}
+  .phase-banner{margin:60px -24px 0; padding:36px 24px;}
+  .block-detail{padding:0 24px 20px 24px;}
+  .block-header{grid-template-columns:80px 1fr auto;}
+  .overview-strip{grid-template-columns:1fr 1fr;}
+}
+
+@media(max-width:520px){
+  .overview-strip{grid-template-columns:1fr;}
+  .callout-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <span class="clef">𝄞</span>
+    <span>Violin · Classical</span>
+  </div>
+
+  <div class="nav-phase">Start Here</div>
+  <a class="nav-link" href="#intro">How This Course Works</a>
+  <a class="nav-link" href="#equipment">Equipment Guide</a>
+
+  <div class="nav-phase">Phase I — Foundations</div>
+  <a class="nav-link" href="#w1">Week 1 · The Instrument</a>
+  <a class="nav-link" href="#w2">Week 2 · First Notes</a>
+  <a class="nav-link" href="#w3">Week 3 · Four Fingers</a>
+  <a class="nav-link" href="#w4">Week 4 · Bow & Rhythm</a>
+
+  <div class="nav-phase">Phase II — Voice</div>
+  <a class="nav-link" href="#w5">Weeks 5–6 · New Keys</a>
+  <a class="nav-link" href="#w7">Weeks 7–8 · Tone & Dynamics</a>
+  <a class="nav-link" href="#w9">Weeks 9–10 · Reading Music</a>
+
+  <div class="nav-phase">Phase III — Repertoire</div>
+  <a class="nav-link" href="#w11">Weeks 11–13 · Vibrato</a>
+  <a class="nav-link" href="#w14">Weeks 14–16 · Positions</a>
+  <a class="nav-link" href="#w17">Weeks 17–18 · Performance</a>
+
+  <div class="nav-phase">Phase IV — Advancing</div>
+  <a class="nav-link" href="#w19">Weeks 19–21 · Technique</a>
+  <a class="nav-link" href="#w22">Weeks 22–24 · Milestone</a>
+
+  <div class="nav-phase">Reference</div>
+  <a class="nav-link" href="#milestones">Progress Tracker</a>
+</nav>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">A Complete Six-Month Learning Path</div>
+  <h1>Classical <em>Violin</em><br>from Absolute Zero</h1>
+  <p class="hero-sub">Every practice session broken down minute by minute — exactly what to do, how to do it, and why it matters. No experience assumed.</p>
+  <div class="hero-tags">
+    <span class="hero-tag">Complete Beginner</span>
+    <span class="hero-tag">Classical Music</span>
+    <span class="hero-tag">45–60 Min Daily</span>
+    <span class="hero-tag">24 Weeks</span>
+    <span class="hero-tag">Step-by-Step</span>
+  </div>
+</section>
+
+<div class="content">
+
+<!-- INTRO -->
+<section class="intro-block" id="intro">
+  <h2>Before You Begin</h2>
+  <p>This course assumes you have never touched a violin. Every single instruction is written as if you are standing in a room with the instrument for the very first time. Nothing is skipped, nothing is assumed.</p>
+  <p>Each week gives you a complete daily practice routine, broken into timed blocks. Each block is further expanded into step-by-step instructions — what to physically do, what to listen for, and what mistakes to avoid. You can click any practice block to reveal its full detail.</p>
+
+  <div class="important-box">
+    <strong>The Single Most Important Rule</strong>
+    <p>Never practise through pain. A mild ache in unused muscles is normal. Sharp pain in your shoulder, wrist, elbow, or fingers is your body telling you to stop and re-examine your posture. Tension is the enemy of both good tone and injury prevention. If something hurts, stop, shake out your arms, and start again slowly with less force.</p>
+  </div>
+
+  <p>The structure of each day's practice follows a simple logic: <strong>warm up the body → build new technique → apply it to music → review and consolidate.</strong> This mirrors how professional musicians practise throughout their entire lives. You are not learning a shortcut version — you are learning the real thing, at a beginner's pace.</p>
+
+  <div class="important-box">
+    <strong>How to Use the Expandable Sections</strong>
+    <p>Click the title of any Week to open its full content. Inside each week, click any Practice Block to reveal the detailed step-by-step instructions for that specific part of your session. Read each block fully before attempting it — then return to the page as a reference while you practise.</p>
+  </div>
+</section>
+
+<!-- EQUIPMENT -->
+<section class="equip-section" id="equipment">
+  <h2>Essential Equipment — What to Buy Before Week 1</h2>
+  <div class="equip-grid">
+    <div class="equip-item">
+      <strong>The Violin (4/4 size)</strong>
+      <p>For adults, you need a full-size 4/4 violin. Do not buy the cheapest possible instrument — a very poor instrument produces an unpleasant sound no matter your skill, which is demoralising. Spend £150–£400 / $180–$500 for a beginner outfit (violin + bow + case). Reliable brands: Eastman, Stentor, Fiddlershop. The top of the violin (the face) should be solid spruce — avoid "laminate top" instruments if possible.</p>
+    </div>
+    <div class="equip-item">
+      <strong>The Bow</strong>
+      <p>Your outfit will include a bow. Check that the bow hair is not frayed and the stick is not warped (sight down it like a rifle). A carbon fibre or Brazilwood bow is preferable to fibreglass for a beginner. Never touch the bow hair with your fingers — skin oils ruin it.</p>
+    </div>
+    <div class="equip-item">
+      <strong>Shoulder Rest</strong>
+      <p>Non-negotiable. Without a shoulder rest, you will clamp the violin with your chin and jaw, causing tension and eventually pain. The Kun Bravo (£25/$30) or Bonmusica (£35/$45) are both excellent. It clips onto the lower bout of the violin and bridges the gap between the instrument and your shoulder.</p>
+    </div>
+    <div class="equip-item">
+      <strong>Rosin</strong>
+      <p>The bow hair produces no sound on its own — it needs rosin (a cake of hardened tree resin) to grip the strings. Your outfit will likely include a cake. Apply it before every practice: draw the bow hair across the rosin surface 4–8 slow, full strokes. Do this until you can see a fine white dust on the hair. Too little = silent; too much = scratchy white powder on your instrument (wipe it off with a soft cloth after playing).</p>
+    </div>
+    <div class="equip-item">
+      <strong>Clip-On Chromatic Tuner</strong>
+      <p>A Snark SN-5 or D'Addario NS Micro (£10–£18/$12–$22) clips onto the scroll. It reads vibrations through the wood, so it works in a noisy room. You will use this every single day. Tune before practising — an out-of-tune violin trains your ear incorrectly.</p>
+    </div>
+    <div class="equip-item">
+      <strong>Metronome App</strong>
+      <p>"Pro Metronome" (iOS/Android, free) is excellent. A metronome is a device that clicks at a steady pulse. You will use it constantly — it teaches your body to stay rhythmically consistent, which is one of the hardest things to learn on a stringed instrument.</p>
+    </div>
+    <div class="equip-item">
+      <strong>Music Stand</strong>
+      <p>You must not hunch over a table to read music — this destroys your posture. A basic folding music stand (£15/$18) places the music at eye level. Your head stays up, your back stays straight.</p>
+    </div>
+    <div class="equip-item">
+      <strong>Books to Order Now</strong>
+      <p><em>Suzuki Violin School Vol. 1</em> (essential — this is your repertoire book). <em>Ševčík Op. 1 Part 1</em> (bow exercises — buy once you reach Week 4). These two books will sustain you through this entire course and beyond.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ PHASE I ═══ -->
+<div class="phase-banner" data-roman="I" id="phase1">
+  <div class="phase-num">Phase One · Weeks 1–4</div>
+  <h2>First Foundations</h2>
+  <p class="phase-meta">Learning to hold the instrument, produce your first sounds, and place your fingers</p>
+</div>
+
+<!-- ─── WEEK 1 ─── -->
+<div class="week-card" id="w1">
+  <button class="week-toggle" onclick="toggleWeek(this)">
+    <div>
+      <div class="week-label-small">Week 1</div>
+      <div class="week-title-main">Meeting Your Instrument</div>
+      <div class="week-subtitle">The parts of the violin · Bow hold · Posture · Your first open string tones</div>
+    </div>
+    <div class="week-icon">+</div>
+  </button>
+  <div class="week-body">
+    <div class="overview-strip">
+      <div class="overview-item"><div class="ov-label">Daily Time</div><div class="ov-value">45–55 minutes</div></div>
+      <div class="overview-item"><div class="ov-label">Focus</div><div class="ov-value">Setup, posture, open strings</div></div>
+      <div class="overview-item"><div class="ov-label">Strings Used</div><div class="ov-value">D and A only</div></div>
+      <div class="overview-item"><div class="ov-label">Left Hand</div><div class="ov-value">Not used yet</div></div>
+    </div>
+
+    <div class="week-intro">
+      <p>This week you will not play a single melody. That is intentional. The violin demands that you first establish the physical foundations — how to stand, how to hold the instrument, how to hold the bow — before any music is possible. Rushing this causes habits that take months to undo. Give this week your full attention. By the end of it, you will be able to produce a clear, resonant tone on open strings, which is genuinely satisfying.</p>
+    </div>
+
+    <div class="schedule-header">
+      <h3>Daily Practice Schedule</h3>
+      <span>Click each block for full instructions</span>
+    </div>
+
+    <!-- Block 1 -->
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 0–8</div>
+        <div>
+          <div class="block-name">Setup & Tuning</div>
+          <div class="block-tagline">Preparing the instrument before you play</div>
+        </div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Tighten the bow hair.</strong> Hold the bow at the frog (the heavy rectangular end where your hand goes). Turn the screw at the bottom end clockwise. The hair should tighten until there is a gap of roughly the width of a pencil between the hair and the stick at the middle of the bow. Do not over-tighten — the stick should still have a slight curve toward the hair. After playing, always loosen the hair again by turning the screw counter-clockwise until the hair hangs slack.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Apply rosin.</strong> Hold the bow in one hand and the rosin cake in the other. Draw the bow hair slowly from frog to tip across the rosin surface 6 full strokes. You should see a tiny cloud of white dust. This is correct. Do this every session without fail — a dry bow produces a thin, whispery sound.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Attach the shoulder rest.</strong> The shoulder rest clips onto the lower bout of the violin (the wider, lower half). The feet of the rest grip the edge of the instrument. Adjust the feet so that when the violin rests on your collarbone and shoulder, it sits comfortably without you needing to hold it. The chin rest should sit naturally under your jaw. If it digs into you, the shoulder rest needs adjusting.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Tune the violin.</strong> Clip your tuner onto the scroll (the curled top of the violin). Pluck each string with your right thumb from low to high: G (thickest, leftmost when playing), D, A, E (thinnest, rightmost). The tuner will show you the note name and whether you are sharp (too high) or flat (too low). To tune: turn the fine tuner (the small screw on the tailpiece) for small adjustments. The strings are tuned in perfect fifths. This week, just tune D and A — those are the strings you will use.</span></li>
+        </ul>
+        <div class="callout-grid">
+          <div class="callout listen"><strong>What correct tuning looks like</strong>The tuner needle sits in the centre, ideally showing green. The note letter matches the string: D for the D string, A for the A string.</div>
+          <div class="callout mistake"><strong>Common mistake</strong>Turning the peg instead of the fine tuner. Pegs are for large adjustments only and take practice to use. Use only the fine tuners this week.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 2 -->
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 8–20</div>
+        <div>
+          <div class="block-name">Violin Hold & Posture</div>
+          <div class="block-tagline">The physical foundation of everything</div>
+        </div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Stand with feet shoulder-width apart.</strong> Your weight should be even on both feet. Imagine a string pulling the top of your head upward — this lengthens the spine. Relax your shoulders downward. Many beginners hunch forward — actively resist this.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Raise the violin to your shoulder.</strong> Place the left shoulder rest on your left shoulder (for right-handed players). The lower bout of the violin rests on the shoulder rest, and the chin rest sits to the left of your chin — your jaw (not your chin tip) rests on the chin rest. The violin points roughly 45 degrees to your left, not straight forward and not straight to the side.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Hold the violin without your left hand.</strong> This is the crucial test: if you have set up the shoulder rest correctly, you should be able to hold the violin between shoulder and jaw without any left hand contact. Let your left arm hang. The violin stays. Practise this until it feels stable — aim for 30 seconds without gripping. This will feel strange. It is correct.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Place the left hand on the neck — but do not grip.</strong> The neck of the violin rests in the curve between your left thumb and the base of your index finger. The thumb should be roughly opposite your first or second finger, relaxed and NOT wrapped around the neck. The base knuckles of your fingers should be parallel to the fingerboard. There should be a visible space inside the curve of your hand — no palm contact with the neck.</span></li>
+          <li><span class="step-num">5</span><span class="step-text"><strong>Check in the mirror.</strong> If possible, practise in front of a full-length mirror or hold up your phone camera. Look for: is your violin horizontal or tilting down? (it should be approximately horizontal, maybe slightly angled upward). Is your left elbow tucked under the violin? (it should swing left under the instrument, not hang at your side). Are your shoulders level? (they should be — many beginners raise the left shoulder to "hold" the violin).</span></li>
+        </ul>
+        <div class="callout-grid">
+          <div class="callout listen"><strong>Correct feel</strong>The violin feels balanced between jaw and shoulder. The left arm feels free, not tense. Your neck and shoulder are relaxed — no gripping sensation anywhere.</div>
+          <div class="callout mistake"><strong>Most common mistake</strong>Raising the left shoulder to help hold the violin. This causes neck and shoulder pain rapidly. The shoulder rest does the work. Let it.</div>
+        </div>
+        <div class="maestro-note">
+          <div class="mn-label">A Note on Discomfort</div>
+          <p>This position will feel deeply unnatural this week. That is completely normal — you are asking your body to adopt a position it has never been in. Do not try to make it comfortable by compromising the technique. Instead, rest for 30 seconds when you feel tension, shake out your arms, and return. After 1–2 weeks, the position will begin to feel natural.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 3 -->
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 20–32</div>
+        <div>
+          <div class="block-name">The Bow Hold</div>
+          <div class="block-tagline">How your right hand holds the bow — the source of all tone</div>
+        </div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Hold the bow at the frog with your right hand.</strong> Let your arm hang relaxed at your side first. Notice the natural curve of your fingers. You will preserve this curve when holding the bow.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Place the thumb.</strong> The thumb goes on the underside of the stick, opposite the middle finger. The thumb should be bent (curved outward, not flat or collapsed inward). Place it at the edge of the frog where the stick meets the leather grip. The tip of the thumb touches the stick. This thumb acts as the pivot point for all your bow control.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Drape the fingers over the top.</strong> Place the middle two fingers (middle and ring) over the top of the stick so they curve naturally downward. The index finger contacts the stick roughly at its middle joint — not the tip, not the base. The pinky rests on top of the stick with a curved shape, near the end of the stick. The pinky is your balance and pressure control — it must stay curved, never straight.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Check the gap and curve.</strong> There should be a small, roundish space between your thumb and middle finger, as if holding an egg. Every finger should be gently curved — none pointing straight. No white knuckles. If you feel tension, open your hand completely, let it hang, then replace it on the bow.</span></li>
+          <li><span class="step-num">5</span><span class="step-text"><strong>The "spider walk" exercise.</strong> Hold the bow vertically (tip pointing up) with your left hand. Use only your right hand fingers to slowly walk up and down the stick — no thumb involvement. This trains finger flexibility and independence. Do 2–3 minutes of this daily.</span></li>
+        </ul>
+        <div class="callout-grid">
+          <div class="callout listen"><strong>Correct feel</strong>The bow feels balanced and light. You can slightly flex each finger independently. The pinky keeps the bow from tipping when you use the upper half of the bow.</div>
+          <div class="callout mistake"><strong>The death grip</strong>Squeezing the bow produces a harsh, tight sound and leads to repetitive strain injury. If you can see your knuckles whitening, you are gripping too hard. The fingers hold the bow — they do not strangle it.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 4 -->
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 32–50</div>
+        <div>
+          <div class="block-name">First Open String Bowing</div>
+          <div class="block-tagline">Producing your first real violin tones on the D and A strings</div>
+        </div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Find the contact point.</strong> Place the bow on the A string — the second thinnest string. The correct position is halfway between the bridge (the small, arched wooden piece holding the strings up) and the end of the fingerboard (where the wood ends and the strings go up to the pegbox). This zone is called the "sounding point." Too close to the bridge = harsh, glassy sound. Too close to the fingerboard = thin, whispery sound. Halfway = full, resonant tone.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Check that the bow is straight.</strong> Look at the bow in relation to the bridge. The bow hair should travel parallel to the bridge — straight across the string. If the bow drifts toward the scroll or toward the bridge as you play, your arm path is curved rather than straight. This takes weeks to correct — be patient and conscious of it now.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Draw the first down-bow.</strong> A "down-bow" moves the bow from frog to tip (your arm moves away from you). Start at the frog. Slowly draw the bow across the A string. Use your entire arm — the shoulder, upper arm, forearm and wrist all participate. At the frog you are primarily using your upper arm and shoulder. As the bow moves toward the tip, your forearm extends. Try to use the full length of the bow in one stroke, taking about 4–6 seconds.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Draw the first up-bow.</strong> An "up-bow" moves from tip back to frog (arm moves toward you). After completing your down-bow, reverse the motion. Keep the same contact point, the same bow angle, the same pressure. The tone should be equally sustained.</span></li>
+          <li><span class="step-num">5</span><span class="step-text"><strong>Practice 10 slow full bows on A.</strong> Count in your head: down for 4 slow beats, up for 4 slow beats. Focus entirely on keeping the bow straight and the contact point consistent. Then repeat on the D string. The motion of your arm changes slightly — for D string (lower), your arm drops a little to raise the bow to the correct string level. Experiment until you find the level where the bow sits on D without touching A.</span></li>
+          <li><span class="step-num">6</span><span class="step-text"><strong>The "air bow" check.</strong> Every few minutes, lift the bow off the string and make the same bowing motion through the air. Does your arm feel tense? If so, you are gripping or pushing. The bow should glide with the weight of the arm — not be forced by muscle pressure.</span></li>
+        </ul>
+        <div class="callout-grid">
+          <div class="callout listen"><strong>A good tone sounds like</strong>A full, singing note — somewhat like a cello if playing slowly. The note sustains cleanly from the beginning to the end of the bow stroke. It does not fade in the middle.</div>
+          <div class="callout mistake"><strong>Scratching</strong>The most common beginner sound — a harsh, raspy noise. Usually caused by too much pressure and too little bow speed, OR by bowing too close to the bridge. Lighten the arm weight and slow the bow down.</div>
+        </div>
+        <div class="maestro-note">
+          <div class="mn-label">Maestro's Note</div>
+          <p>A scratchy sound this week is completely expected and nothing to worry about. The goal is not to sound perfect — it is to understand the variables: contact point, bow speed, and arm weight. Each of these affects the tone. This week you are simply becoming conscious of all three. True tone control comes in weeks, not days.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 5 -->
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 50–55</div>
+        <div>
+          <div class="block-name">Cool-Down & Cleanup</div>
+          <div class="block-tagline">Caring for your instrument</div>
+        </div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Loosen the bow hair.</strong> Turn the screw counter-clockwise until the hair hangs slack. Leaving the bow tight warps the stick over time.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Wipe the violin.</strong> Use a soft cloth (microfibre is ideal) to wipe the rosin dust from the strings and the top of the violin beneath the strings. Rosin buildup damages the varnish over time.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Reflect for 60 seconds.</strong> What felt more relaxed at the end than at the beginning? What was the hardest thing to control? Naming these things consciously helps you focus better in tomorrow's session.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="goals-section">
+      <h4>Week 1 — End of Week Goals</h4>
+      <ul class="goal-list">
+        <li>Name all four strings from lowest to highest: G, D, A, E</li>
+        <li>Hold the violin on your shoulder without using your left hand for 30 seconds</li>
+        <li>Form a correct bow hold with a curved thumb and no white knuckles</li>
+        <li>Produce a tone on the A string that does not scratch for at least 3 consecutive full bows</li>
+        <li>Identify the contact point between bridge and fingerboard by eye</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ─── WEEK 2 ─── -->
+<div class="week-card" id="w2">
+  <button class="week-toggle" onclick="toggleWeek(this)">
+    <div>
+      <div class="week-label-small">Week 2</div>
+      <div class="week-title-main">The Left Hand Awakens</div>
+      <div class="week-subtitle">Placing your first finger · Playing your first real note · The D major scale begins</div>
+    </div>
+    <div class="week-icon">+</div>
+  </button>
+  <div class="week-body">
+    <div class="overview-strip">
+      <div class="overview-item"><div class="ov-label">Daily Time</div><div class="ov-value">50–60 minutes</div></div>
+      <div class="overview-item"><div class="ov-label">New Skill</div><div class="ov-value">Left hand finger placement</div></div>
+      <div class="overview-item"><div class="ov-label">Strings</div><div class="ov-value">D and A</div></div>
+      <div class="overview-item"><div class="ov-label">First Song</div><div class="ov-value">Mary Had a Little Lamb</div></div>
+    </div>
+
+    <div class="week-intro">
+      <p>This week you introduce your left hand to the fingerboard for the first time. You will learn to place one finger — the index finger — in tune on the A string, producing the note B. This is a bigger step than it sounds: you must simultaneously bow with the right hand and place a finger with the left. Start very slowly. These two systems feel completely uncoordinated at first. That is normal — your brain is building an entirely new neural pathway.</p>
+    </div>
+
+    <div class="schedule-header">
+      <h3>Daily Practice Schedule</h3>
+      <span>Click each block to expand</span>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 0–10</div>
+        <div>
+          <div class="block-name">Tuning & Open String Warm-Up</div>
+          <div class="block-tagline">Recap Week 1 — tone, contact point, straight bow</div>
+        </div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Tune all four strings</strong> using the clip-on tuner. Even if you won't play G and E yet, a violin in tune resonates more beautifully across all strings due to sympathetic vibration.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>10 slow full bows on D.</strong> From frog to tip, checking that the bow stays parallel to the bridge and that your contact point is halfway between bridge and fingerboard. Notice the tone — is it clearer than last week? It should be.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>10 slow full bows on A.</strong> Same focus. Then alternate: one bow on D, one bow on A. Your right arm level shifts between strings — practice this transition until it feels smooth.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 10–28</div>
+        <div>
+          <div class="block-name">Left Hand Position & First Finger</div>
+          <div class="block-tagline">Placing finger 1 on the A string to produce the note B</div>
+        </div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Left hand frame without the violin.</strong> Hold your left hand in the air, palm facing you. Let the fingers curve naturally. This rounded shape is what you want on the fingerboard. Do not flatten the fingers or collapse the knuckles.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Place finger 1 (index finger) on the A string.</strong> The fingertip should press down on the string firmly enough that when you bow, the note sounds clear — not buzzing. The pressing point is the very tip of your finger, where the fingerprint is. Not the pad. If you look at your finger from above, your nail should be almost vertical, pointing toward the ceiling.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Check the thumb.</strong> It should be relaxed and opposite your first or second finger, resting lightly against the side of the neck. Not squeezing. Not wrapping around. If your thumb is tense, stop, open the hand completely, hang your arm, and replace it.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Bow while holding finger 1 down.</strong> Now bow the A string with finger 1 pressed down. The note you are producing is B. Use your clip-on tuner to confirm — the tuner should read "B." If it reads lower, you need to move finger 1 slightly toward the bridge. If it reads higher, move it slightly toward the scroll.</span></li>
+          <li><span class="step-num">5</span><span class="step-text"><strong>The "tap and listen" drill.</strong> Place finger 1 down, bow, listen, check tuner. Lift finger 1, bow the open A. Replace finger 1, bow. You are training your ear to hear the difference between A and B. Repeat 20 times.</span></li>
+        </ul>
+        <div class="callout-grid">
+          <div class="callout listen"><strong>In-tune sounds like</strong>A clear, ringing note. When B is in tune with the open A string, you may hear a subtle "agreement" or resonance between the notes — the violin rings sympathetically.</div>
+          <div class="callout mistake"><strong>The buzzing note</strong>If the note buzzes or sounds muffled, you are not pressing firmly enough, or your finger is touching an adjacent string. Check that only the tip of finger 1 is contacting the string.</div>
+        </div>
+        <div class="maestro-note">
+          <div class="mn-label">On Finger Pain</div>
+          <p>Your fingertips will hurt this week — the steel strings cut into soft skin. This is universal and temporary. Small calluses form within 2–3 weeks and the pain disappears entirely. Practice in shorter bursts if needed (10 minutes on, 5 off) rather than pushing through sharp pain.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 28–45</div>
+        <div>
+          <div class="block-name">Adding Finger 2 · Preparing the Scale</div>
+          <div class="block-tagline">The note C# on the A string</div>
+        </div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Place finger 1 first, then add finger 2.</strong> This is the critical rule: always build from the lower finger up. Place finger 1 (B), then without lifting it, place finger 2 (middle finger) one whole step above it on the A string. The note is C#. Use the tuner to confirm. Finger 2 should sit comfortably close to finger 1 — about the width of two fingers apart.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>The "frame" concept.</strong> In first position, your four fingers occupy four consecutive positions on the fingerboard. They should all stay curved and near the string, even when not actively pressing. Think of them hovering, ready to press — not lifting high in the air between notes.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Practice the A–B–C# pattern.</strong> Open A (no fingers) → Finger 1 (B) → Fingers 1+2 (C#). Do this slowly, bowing each note twice. Use the tuner for the first 5 minutes, then try to do it by ear. Your ear will start to hear whether C# is in tune or not — trust this developing instinct.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 45–58</div>
+        <div>
+          <div class="block-name">First Melody: "Mary Had a Little Lamb"</div>
+          <div class="block-tagline">Applying your new notes to a recognisable song</div>
+        </div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>The notes you need.</strong> "Mary Had a Little Lamb" uses only three notes: B (finger 1 on A), A (open A string), and G (open D string, which produces the note... wait — actually on violin, the open D is D, not G. The note G is finger 3 on the D string — skip this for now). A simplified version using only B and A: play B–A–B–B–B (Mary had a lit-tle), then A–A–A (lamb, lamb, lamb). Just two notes. Start there.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Go extremely slowly.</strong> The goal is not speed — it is accuracy. Take 2 seconds per note. Think about which finger goes down, make sure it is in tune, bow, then move to the next note. Slow and correct builds skill. Fast and wrong builds mistakes.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Hum as you play.</strong> Quietly hum the melody as you bow it. This connects your ear directly to your fingers and is one of the most powerful learning tools available to you. It also confirms that your fingers are producing the right pitches — if it doesn't sound like Mary Had a Little Lamb, something is out of tune.</span></li>
+        </ul>
+        <div class="maestro-note">
+          <div class="mn-label">Maestro's Note</div>
+          <p>Do not be discouraged if it sounds rough and slow this week. Every professional violinist you have ever heard once played exactly this same melody, on this same note, at this same halting tempo. The violin is not a beginner-friendly instrument — it rewards those who stay patient through the first month. You are in that month right now.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="goals-section">
+      <h4>Week 2 — End of Week Goals</h4>
+      <ul class="goal-list">
+        <li>Place finger 1 on the A string and produce a clear, in-tune B consistently</li>
+        <li>Place finger 2 on the A string and produce a clear C# without lifting finger 1</li>
+        <li>Play the pattern A–B–A–B 10 times without stopping, slowly but accurately</li>
+        <li>Perform a recognisable (if slow) version of at least the first phrase of Mary Had a Little Lamb</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ─── WEEK 3 ─── -->
+<div class="week-card" id="w3">
+  <button class="week-toggle" onclick="toggleWeek(this)">
+    <div>
+      <div class="week-label-small">Week 3</div>
+      <div class="week-title-main">All Four Fingers</div>
+      <div class="week-subtitle">Completing the D major scale · Fingers 3 & 4 · Your first full scale</div>
+    </div>
+    <div class="week-icon">+</div>
+  </button>
+  <div class="week-body">
+    <div class="overview-strip">
+      <div class="overview-item"><div class="ov-label">New Fingers</div><div class="ov-value">Fingers 3 and 4</div></div>
+      <div class="overview-item"><div class="ov-label">New Notes</div><div class="ov-value">E and F# on A string</div></div>
+      <div class="overview-item"><div class="ov-label">Metronome</div><div class="ov-value">♩ = 50 bpm</div></div>
+      <div class="overview-item"><div class="ov-label">New Piece</div><div class="ov-value">Ode to Joy (opening)</div></div>
+    </div>
+
+    <div class="week-intro">
+      <p>This week you complete your first full scale — the D major scale, one octave. A scale is simply a series of notes in a musical key, going from low to high and back. The D major scale consists of: D (open D string) – E (finger 1 on D) – F# (finger 2 on D) – G (open G string... actually no — on violin, G is finger 3 on D string... let us be precise). The one-octave D major scale goes across two strings. You will learn it in full this week.</p>
+    </div>
+
+    <div class="schedule-header">
+      <h3>Daily Practice Schedule</h3>
+      <span>Click each block to expand</span>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 0–12</div>
+        <div>
+          <div class="block-name">Tuning & Week 2 Review</div>
+          <div class="block-tagline">Cementing what you know before adding new material</div>
+        </div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Tune.</strong> All four strings. By now you should be getting faster at reading the tuner and adjusting.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>8 open string warm-up bows</strong> on D and A alternating. Check your posture: is your left shoulder down? Is the bow straight? Are you using the full bow length?</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Play A–B–C# three times through.</strong> Using what you learned in Week 2. These should be starting to feel more natural. If any note still sounds consistently out of tune, spend an extra 2 minutes on it with the tuner before proceeding.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 12–32</div>
+        <div>
+          <div class="block-name">The Complete D Major Scale</div>
+          <div class="block-tagline">Eight notes across two strings — the foundation of classical technique</div>
+        </div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>The full D major scale, note by note.</strong> Here is exactly what you play: (1) Open D string — the note D. (2) Finger 1 on D string — the note E. (3) Finger 2 on D string — the note F#. (4) Finger 3 on D string — the note G. (5) Open A string — the note A. (6) Finger 1 on A string — the note B. (7) Finger 2 on A string — the note C#. (8) Finger 3 on A string — the note D (one octave higher than note 1). That is the complete scale.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Finger 3 placement on D string.</strong> The ring finger (finger 3) stretches to reach its position. The key is to NOT let the other fingers fly away — fingers 1 and 2 stay near the string even when finger 3 is pressing. The hand frame stays intact. Check with the tuner: finger 3 on D string should read as G.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>The string crossing from D to A.</strong> After playing finger 3 on D (the note G), you lift all fingers and bow the open A string. Your right arm drops slightly to move from D to A. This should feel like a relaxed arm-level change, not a lurch. Practise the crossing 10 times: G (finger 3 on D) then A (open A), slowly.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Play the full scale at ♩=50.</strong> Set your metronome to 50 beats per minute. Play one note per beat. Go up all 8 notes (D to D), then come back down all 8 (D to D). When going down, you are lifting fingers in reverse order. This requires as much practice as going up. Do the full scale up and down 5 times, slowly, with the metronome.</span></li>
+        </ul>
+        <div class="callout-grid">
+          <div class="callout listen"><strong>A well-played scale sounds like</strong>Each note is equally clear and equally long. No note is shorter or louder than its neighbours. The string crossing from D to A sounds seamless — no bump or gap.</div>
+          <div class="callout mistake"><strong>The rushing mistake</strong>Almost every beginner speeds up as the scale goes up. The metronome exposes this. Trust the click. One note per click — no more, no less.</div>
+        </div>
+        <div class="maestro-note">
+          <div class="mn-label">Why Scales Matter in Classical Music</div>
+          <p>Every major classical piece you will ever play is built from scales and arpeggios. When you practise the D major scale, you are not doing a boring exercise — you are learning the building blocks of Bach, Vivaldi, Handel, and Mozart. A violinist who knows their scales plays with fluency and confidence. One who skips them always struggles in the same places.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 32–50</div>
+        <div>
+          <div class="block-name">Ode to Joy — First Phrase</div>
+          <div class="block-tagline">Beethoven's most recognisable melody, built from your new notes</div>
+        </div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>The notes of Ode to Joy (first phrase).</strong> The melody goes: B–B–C#–D–D–C#–B–A–A–B–B–A–A. In finger terms on the A string: Finger1–Finger1–Finger2–Finger3–Finger3–Finger2–Finger1–Open–Open–Finger1–Finger1–Open–Open. Note: the D at position 4 is finger 3 on the A string (not the open D string — it is an octave higher).</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Say the note names out loud</strong> before playing. Speak: "B, B, C-sharp, D, D..." This connects the visual/conceptual knowledge to the physical. Then play each note with two slow bow strokes. Then try one bow stroke per note.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Hum it while you play.</strong> This is not optional — it is one of the most effective learning techniques known in musical education. Your ear corrects your fingers faster than your eye does.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="goals-section">
+      <h4>Week 3 — End of Week Goals</h4>
+      <ul class="goal-list">
+        <li>Play the complete D major scale up and down at ♩=50 without stopping</li>
+        <li>Place all four fingers on the A string and produce in-tune notes</li>
+        <li>Play the first phrase of Ode to Joy recognisably (slowly is fine)</li>
+        <li>Maintain the left hand frame — no fingers flying, thumb relaxed throughout</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ─── WEEK 4 ─── -->
+<div class="week-card" id="w4">
+  <button class="week-toggle" onclick="toggleWeek(this)">
+    <div>
+      <div class="week-label-small">Week 4</div>
+      <div class="week-title-main">Bow Technique & Rhythm</div>
+      <div class="week-subtitle">Détaché · Slurs · Reading music basics · Twinkle Variations</div>
+    </div>
+    <div class="week-icon">+</div>
+  </button>
+  <div class="week-body">
+    <div class="overview-strip">
+      <div class="overview-item"><div class="ov-label">New Bow Strokes</div><div class="ov-value">Détaché, slurs</div></div>
+      <div class="overview-item"><div class="ov-label">Metronome</div><div class="ov-value">♩ = 60 bpm</div></div>
+      <div class="overview-item"><div class="ov-label">New Piece</div><div class="ov-value">Twinkle (Suzuki)</div></div>
+      <div class="overview-item"><div class="ov-label">Music Theory</div><div class="ov-value">Quarter, half, whole notes</div></div>
+    </div>
+
+    <div class="week-intro">
+      <p>Having established your left hand and a basic right hand bow stroke, you now begin to differentiate <em>how</em> the bow moves. This week introduces two fundamental bow strokes used throughout all of classical music, plus an introduction to reading the rhythms on the page. By the end of the week you will play your first complete Suzuki piece — a milestone worth celebrating.</p>
+    </div>
+
+    <div class="schedule-header"><h3>Daily Practice Schedule</h3><span>Click to expand each block</span></div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 0–12</div>
+        <div><div class="block-name">Tuning & Scale Warm-Up</div><div class="block-tagline">D major scale at ♩=60 — pushing slightly faster</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Tune.</strong> Then stretch your left hand gently: open and close a fist 10 times. Rotate your wrist. Shake out your bow arm.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>D major scale, ♩=60.</strong> This is slightly faster than last week. If it feels rushed, drop back to 54. Speed is never forced — it builds naturally as the notes become secure.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Play Ode to Joy from memory.</strong> You should now know the first phrase without looking at any notes. If you don't, spend 2 minutes reviewing it before moving on.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 12–28</div>
+        <div><div class="block-name">Détaché & Slurs</div><div class="block-tagline">The two most fundamental bow strokes in classical playing</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Détaché (separate bows).</strong> "Détaché" is French for "detached." Each note gets its own bow stroke — one note per bow direction. This is what you have been doing all week. Now practise it consciously: D major scale with one note per bow, alternating down-bow and up-bow. The strokes should be even in length and pressure. No accent between notes — smooth transitions from down to up.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Slurs — two notes per bow.</strong> A slur means two or more notes are played in one continuous bow stroke. In notation, slurs are shown by a curved arc over the notes. To play a slur: start a down-bow on D (open), and while the bow is still moving in the same direction, place finger 1 to produce E. You do not change bow direction between D and E — they share one bow stroke. Practise: D+E on one down-bow, F#+G on one up-bow. Then the whole scale in pairs.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>The challenge of slurs.</strong> The finger change must happen smoothly — no gap in the sound between the two notes. The hardest moment is changing the left finger without changing bow speed. Practise this slowly. If you hear a silence between the notes, slow down further until the transition is seamless.</span></li>
+        </ul>
+        <div class="callout-grid">
+          <div class="callout listen"><strong>A good slur sounds like</strong>Two notes that flow into each other with no gap, no accent, and no change in volume between them. The bow never stops or stutters.</div>
+          <div class="callout mistake"><strong>The "hiccup" mistake</strong>Many beginners unconsciously slow or stop the bow when changing left hand fingers during a slur. This creates a bump or silence. The bow must continue at constant speed regardless of what the left hand is doing.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 28–40</div>
+        <div><div class="block-name">Reading Rhythm — Quarter, Half & Whole Notes</div><div class="block-tagline">The first step toward reading sheet music</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>The quarter note (crotchet).</strong> Looks like a filled oval with a stem. Lasts 1 beat. At ♩=60, that is exactly 1 second. This is your basic pulse unit. Clap four quarter notes in a row: 1–2–3–4.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>The half note (minim).</strong> Looks like an empty oval with a stem. Lasts 2 beats. Clap a half note: hold the clap for 2 full beats (1–2) before the next. Practice alternating: quarter–quarter–half. Count aloud: 1, 2, 1–2.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>The whole note (semibreve).</strong> An empty oval with no stem. Lasts 4 beats. Clap once and hold for the full 4 beats. This is the longest note you'll see in beginner music.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Translate to the violin.</strong> On your open A string: play 4 quarter notes (one bow each), then 2 half notes (two beats each), then 1 whole note (hold the bow for 4 full beats). Use the metronome. This simple exercise trains your body to relate bow duration to rhythm.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 40–58</div>
+        <div><div class="block-name">Twinkle Twinkle — Variation A (Suzuki)</div><div class="block-tagline">Your first complete Suzuki piece</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Twinkle Variation A rhythm.</strong> The Suzuki "Mississippi Hot Dog" rhythm: short-short-long, short-short-long. In bow terms: two quick quarter notes, then a half note. The notes are: A–A–E–E–F#–F#–E (on A string). Practice just the rhythm on the open A string first, without worrying about pitches.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Add the pitches.</strong> A (open) – A (open) – E (finger 1 on D string, note E — actually the E above middle, which is the open A... clarification: in Suzuki Twinkle, the notes are played on the A and E strings. Let's simplify: play A–A on open A, then E–E on open E string, then F#–F# is finger 2 on E string, then E is open E again. Or use only A string: A (open) A (open) B (finger 1) B (finger 1) C# (finger 2) C# (finger 2) B (finger 1). This is a transposed version but good practice.)</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Most importantly: go slowly.</strong> Open your Suzuki Book 1 if you have it, or search for a free printable of Twinkle. Find the first variation. Say the rhythm aloud ("Mississippi Hot Dog, Mississippi Hot Dog") while clapping. Then play it. Slowly. Correctly. This is your first complete classical teaching piece.</span></li>
+        </ul>
+        <div class="maestro-note">
+          <div class="mn-label">Milestone — End of Phase I</div>
+          <p>You have now completed one full month of violin study. You have a working bow hold, a working left hand position, a complete D major scale, two bow strokes, and your first Suzuki piece. This is not nothing — this is the foundation that every classical violinist, including the greatest in the world, was built on. The next phase is where you begin to actually sound like a musician.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="goals-section">
+      <h4>Week 4 — End of Week Goals</h4>
+      <ul class="goal-list">
+        <li>Play the D major scale with two-note slurs (every pair of notes on one bow)</li>
+        <li>Clap and count quarter, half, and whole note rhythms without hesitation</li>
+        <li>Play Twinkle Variation A at ♩=60 — slowly but rhythmically correct</li>
+        <li>Complete one full month of practice — the highest dropout point for beginners</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ PHASE II ═══ -->
+<div class="phase-banner" data-roman="II" id="phase2">
+  <div class="phase-num">Phase Two · Weeks 5–10</div>
+  <h2>Building the Voice</h2>
+  <p class="phase-meta">New keys, string crossings, dynamics, vibrato preparation, music reading</p>
+</div>
+
+<!-- Week 5-6 -->
+<div class="week-card" id="w5">
+  <button class="week-toggle" onclick="toggleWeek(this)">
+    <div>
+      <div class="week-label-small">Weeks 5–6</div>
+      <div class="week-title-main">New Keys & String Crossings</div>
+      <div class="week-subtitle">A major & G major scales · Crossing strings smoothly · Minuet in G</div>
+    </div>
+    <div class="week-icon">+</div>
+  </button>
+  <div class="week-body">
+    <div class="overview-strip">
+      <div class="overview-item"><div class="ov-label">New Scales</div><div class="ov-value">A major, G major</div></div>
+      <div class="overview-item"><div class="ov-label">Technique</div><div class="ov-value">Arm-level string crossing</div></div>
+      <div class="overview-item"><div class="ov-label">Metronome</div><div class="ov-value">♩ = 60–72</div></div>
+      <div class="overview-item"><div class="ov-label">New Piece</div><div class="ov-value">Minuet in G (Bach)</div></div>
+    </div>
+    <div class="week-intro">
+      <p>You now expand beyond D major into two new keys — A major and G major. Each new scale introduces different finger patterns and requires your ear to adjust to new intervals. String crossings — moving the bow from one string to another — become central this week. A smooth string crossing is invisible; a rough one produces bumps, scratches, and accidentally-played adjacent strings.</p>
+    </div>
+    <div class="schedule-header"><h3>Daily Practice Schedule</h3><span>Click to expand</span></div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 0–15</div>
+        <div><div class="block-name">Three-Scale Warm-Up</div><div class="block-tagline">D major, then A major, then G major — all one octave</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>D major (review).</strong> Should feel comfortable now. Play it once up and down at ♩=66. Correct any notes that still sound out of tune.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>A major (new).</strong> This scale starts on the open A string: A (open A) – B (finger 1 on A) – C# (finger 2 on A) – D (finger 3 on A) – E (open E string) – F# (finger 2 on E) – G# (finger 3 on E) – A (finger 4 on E). Note: A major has three sharps (F#, C#, G#). The G# is a "high 3" — finger 3 placed slightly closer to the bridge than normal. Check with tuner.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>G major (new).</strong> Starts on the open G string: G (open G) – A (finger 1 on G) – B (finger 2 on G) – C (finger 3 on G, "low 3" — slightly closer to scroll) – D (open D) – E (finger 1 on D) – F# (finger 2 on D) – G (finger 3 on D). G major has one sharp: F#.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 15–32</div>
+        <div><div class="block-name">String Crossing Exercises</div><div class="block-tagline">How the bow arm shifts level to move between strings</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Understanding arm levels.</strong> The four strings sit at different heights. To bow G (the lowest), your right arm is at its highest level. To bow E (the highest), your arm drops to its lowest level. The sequence from low string to high string: G = arm up, D = arm slightly lower, A = lower still, E = lowest. This is counterintuitive but correct.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>The four-level arm drill.</strong> Without any left hand fingers, bow each open string in order: G (4 bows), D (4 bows), A (4 bows), E (4 bows). As you move from each string to the next, feel your entire right arm drop slightly. Do not just twist the wrist — the entire arm from the shoulder moves.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Adjacent string crossing.</strong> Now rapidly alternate: G–D–G–D (4 times), then D–A–D–A (4 times), then A–E–A–E (4 times). This teaches the arm to find each string reliably. Then try skipping: G–A–G–A and D–E–D–E.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>The key rule about string crossings.</strong> Never use only the wrist to cross strings — use the full arm, moving from the shoulder. Wrist-only crossings are weak and inconsistent. The arm level changes; the wrist stays relaxed and follows.</span></li>
+        </ul>
+        <div class="callout-grid">
+          <div class="callout listen"><strong>A clean crossing sounds like</strong>An immediate, clear tone on the new string with no scratch and no accidentally-sounded third string between them.</div>
+          <div class="callout mistake"><strong>Catching the adjacent string</strong>If you hear a faint extra note when crossing, your bow angle is wrong. The bow should sit flat on exactly one string at a time. Check your arm level.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 32–55</div>
+        <div><div class="block-name">Minuet in G — Bach/Petzold</div><div class="block-tagline">One of the most beloved classical pieces, now within your reach</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Listen first.</strong> Search "Minuet in G Bach violin" on YouTube. Listen to the full piece twice. Absorb its character — it is graceful, dance-like, in triple meter (3 beats per bar). Knowing how it should sound is essential before you play it.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Triple meter (3/4 time).</strong> Each bar has 3 beats: 1–2–3, 1–2–3. The first beat of each bar has a slight natural emphasis: STRONG–weak–weak. Clap this pattern before picking up the violin.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Learn bar by bar, not the whole piece at once.</strong> Suzuki Book 1 contains this piece. Open it. Learn bars 1–4 only this session. Say the note names, then play at ♩=60 or slower. Once bars 1–4 feel secure (which may take 2–3 days), add bars 5–8.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Count aloud while playing.</strong> Say "one two three, one two three" out loud as you bow. This feels strange but is incredibly effective. Your internal rhythm improves dramatically when you verbalise it.</span></li>
+        </ul>
+        <div class="maestro-note">
+          <div class="mn-label">Maestro's Note</div>
+          <p>The Minuet in G is not "easy beginner music" in spirit — it is a real classical piece with genuine musical content. Play it with respect. Even at ♩=60, it can have grace and elegance if you shape the phrases consciously. This is your first taste of real classical performance.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="goals-section">
+      <h4>Weeks 5–6 Goals</h4>
+      <ul class="goal-list">
+        <li>Play A major scale one octave at ♩=66 with correct F#, C#, G# (high 3)</li>
+        <li>Play G major scale one octave, identifying the "low 3" for C natural</li>
+        <li>Cross between any two adjacent strings without catching a third string</li>
+        <li>Learn the A section of Minuet in G (first 16 bars) at a slow but musical tempo</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Week 7-8 -->
+<div class="week-card" id="w7">
+  <button class="week-toggle" onclick="toggleWeek(this)">
+    <div>
+      <div class="week-label-small">Weeks 7–8</div>
+      <div class="week-title-main">Tone, Dynamics & Musical Expression</div>
+      <div class="week-subtitle">Piano & forte · Bow speed vs pressure · Shaping a musical phrase</div>
+    </div>
+    <div class="week-icon">+</div>
+  </button>
+  <div class="week-body">
+    <div class="overview-strip">
+      <div class="overview-item"><div class="ov-label">Focus</div><div class="ov-value">Dynamic control</div></div>
+      <div class="overview-item"><div class="ov-label">New Concepts</div><div class="ov-value">pp, p, mf, f, ff</div></div>
+      <div class="overview-item"><div class="ov-label">Technique</div><div class="ov-value">Bow speed & arm weight</div></div>
+      <div class="overview-item"><div class="ov-label">Listening</div><div class="ov-value">Perlman, Hahn recordings</div></div>
+    </div>
+    <div class="week-intro">
+      <p>This week shifts focus from notes to sound. Any student can learn the right notes — the difference between a musician and a note-player is dynamics and phrasing. You will learn to play at multiple volumes, understand how the bow produces different dynamics, and begin shaping musical phrases with intention. This is when violin begins to feel genuinely artistic.</p>
+    </div>
+    <div class="schedule-header"><h3>Daily Practice Schedule</h3><span>Click to expand</span></div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 0–15</div>
+        <div><div class="block-name">Scale Warm-Up with Dynamics</div><div class="block-tagline">Three scales — each with a different dynamic</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>D major, very soft (pp).</strong> Play the scale using almost no arm weight and a relatively fast, light bow stroke. The sound should be hushed but not silent or scratchy. Think of a whispered conversation — present but delicate.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>A major, medium (mf).</strong> Normal pressure, full bow. This is your standard practice dynamic — present and clear without forcing.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>G major, strong (f or ff).</strong> Increase arm weight (let the arm sink into the bow), slow the bow speed slightly, and keep the contact point slightly closer to the bridge. Loud violin playing is NOT about pressing harder with your hand — it is about the weight of your arm dropping into the string. Feel the difference.</span></li>
+        </ul>
+        <div class="callout-grid">
+          <div class="callout listen"><strong>The key insight</strong>Volume on violin is controlled primarily by bow speed and arm weight — not by finger pressure. A fast, light bow = soft. A slow, heavy bow = loud. Experiment freely this week.</div>
+          <div class="callout mistake"><strong>Forcing loudness</strong>Pressing the bow into the string with the hand (not the arm) creates a choked, crunching sound. True ff is open and resonant, not strangled. If your loud sounds ugly, you are pressing — use more arm weight instead.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 15–32</div>
+        <div><div class="block-name">Vibrato Preparation (Arm Flexibility)</div><div class="block-tagline">Building the physical prerequisite for vibrato — 3 weeks away</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>What is vibrato?</strong> Vibrato is a gentle oscillation of pitch — a controlled wavering that warms the tone and gives the violin its characteristic "singing" quality. All classical violinists use it. It takes 6–12 weeks of preparation to develop properly. This week begins that preparation.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>The wrist flexibility exercise (no violin).</strong> Hold your left arm out, forearm vertical. Let the hand hang relaxed at the wrist. Now rock the hand gently forward and back — like a slow wave. The forearm stays still; only the hand rocks. This is the foundation of wrist vibrato. Do 30 seconds.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>The arm rock (on violin, no bowing).</strong> Place finger 2 on the A string. Without bowing, rock your entire lower arm forward (toward the scroll) and back (toward the bridge), so the fingertip rolls slightly. This is the motion of arm vibrato. The tip of the finger stays on the string throughout. Do 30 slow rocks. This is not vibrato yet — this is learning the motion.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 32–55</div>
+        <div><div class="block-name">Musical Phrasing & Repertoire</div><div class="block-tagline">Completing Minuet in G · Playing with shape and intention</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>What is a phrase?</strong> A musical phrase is like a sentence — it has a beginning, a peak, and an end. In the Minuet in G, the first 4-bar phrase rises to a peak at bar 3 and settles at bar 4. Play it starting soft, getting slightly louder toward bar 3, and easing back at bar 4. This takes 5 seconds of music and already sounds ten times more musical.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Find the peak note of each phrase.</strong> In any melody, there is usually one note that feels like the "top" — the most important. Make it slightly louder, or sustain it slightly longer (called a "tenuto"). Let the other notes support it.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Recommended listening this week.</strong> Find recordings of: Itzhak Perlman playing Bach, Hilary Hahn playing Paganini, and Anne-Sophie Mutter playing Beethoven. Listen for how they shape phrases. You are training your ear to hear what you are aiming for. Musical taste is not born — it is built by listening.</span></li>
+        </ul>
+        <div class="maestro-note">
+          <div class="mn-label">Maestro's Note</div>
+          <p>Technique without expression is machinery. Expression without technique is noise. You are now building both simultaneously. When you practise dynamics and phrasing, you are not doing a separate "musical" activity — you are developing your technique, because controlling dynamics requires precise bow control. These things are inseparable.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="goals-section">
+      <h4>Weeks 7–8 Goals</h4>
+      <ul class="goal-list">
+        <li>Play a piece at three clearly different dynamic levels: pp, mf, and f</li>
+        <li>Identify the phrase peak in the Minuet in G and play toward it deliberately</li>
+        <li>Perform the complete Minuet in G from beginning to end at a musical tempo</li>
+        <li>Complete 10 days of vibrato preparation arm-rock exercises</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Week 9-10 -->
+<div class="week-card" id="w9">
+  <button class="week-toggle" onclick="toggleWeek(this)">
+    <div>
+      <div class="week-label-small">Weeks 9–10</div>
+      <div class="week-title-main">Reading Music Fluently</div>
+      <div class="week-subtitle">Treble clef note reading · Eighth notes · Sight reading basics</div>
+    </div>
+    <div class="week-icon">+</div>
+  </button>
+  <div class="week-body">
+    <div class="overview-strip">
+      <div class="overview-item"><div class="ov-label">Focus</div><div class="ov-value">Sheet music literacy</div></div>
+      <div class="overview-item"><div class="ov-label">New Rhythm</div><div class="ov-value">Eighth notes (quavers)</div></div>
+      <div class="overview-item"><div class="ov-label">Goal</div><div class="ov-value">Read all first-position notes</div></div>
+      <div class="overview-item"><div class="ov-label">New Piece</div><div class="ov-value">Perpetual Motion (Suzuki)</div></div>
+    </div>
+    <div class="week-intro">
+      <p>A musician who cannot read music is like an author who cannot read text — they can still function, but they are severely limited. This week you develop genuine fluency in reading treble clef, focusing on the notes in first position (the range you currently play). You will also learn the eighth note — the rhythmic unit that unlocks almost all lively classical passages.</p>
+    </div>
+    <div class="schedule-header"><h3>Daily Practice Schedule</h3><span>Click to expand</span></div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 0–15</div>
+        <div><div class="block-name">Scale Warm-Up + Treble Clef Note Drill</div><div class="block-tagline">Name every note on the staff before playing it</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Three scales (D, A, G major) — ♩=72.</strong> You should be noticeably more comfortable with these now. Focus on evenness of tone across string crossings. No rushing at the top of the scale.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>The treble clef note map.</strong> Learn these lines from bottom to top: E–G–B–D–F (Every Good Boy Does Fine). And the spaces from bottom to top: F–A–C–E (FACE). These are the notes on the five staff lines and four spaces of the treble clef. Write them down, test yourself daily.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Note reading drill.</strong> Open your Suzuki book to any page. Point to random notes and name them aloud before playing. Aim to name any note in first position within 3 seconds. This drill takes 5 minutes and builds reading speed rapidly.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 15–32</div>
+        <div><div class="block-name">Eighth Notes — The Rhythm of Classical Music</div><div class="block-tagline">Half a beat each: the key to playing runs and passages</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>What is an eighth note?</strong> An eighth note (quaver) lasts half a beat — two eighth notes fit in the time of one quarter note. They look like quarter notes with a flag on the stem, or joined together with a beam. At ♩=60, you play two eighth notes per second.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Counting eighth notes.</strong> Count "1 and 2 and 3 and 4 and" — the numbered beats are the downbeats, and "and" falls exactly between each pair of beats. Clap on every syllable: one-AND-two-AND-three-AND-four-AND. This is the rhythmic grid of almost all classical music.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Eighth notes on violin.</strong> Play the D major scale in eighth notes at ♩=60 (two notes per beat). Each note gets half a bow — shorter strokes now, staying in the middle third of the bow. Keep the sound even and the tempo absolutely steady with the metronome.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 32–55</div>
+        <div><div class="block-name">Perpetual Motion (Suzuki) & Sight Reading</div><div class="block-tagline">Non-stop eighth notes — the bow arm's endurance test</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>What is "Perpetual Motion"?</strong> It is a Suzuki Book 1 piece consisting almost entirely of eighth notes — a continuous stream of them. It is the classic piece used to build consistent bow technique, because any unevenness in the bow arm is immediately audible in a continuous eighth-note passage.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Learn it in 4-bar chunks.</strong> Do not attempt the whole piece at once. Master bars 1–4 at ♩=52, then add bars 5–8. Each chunk should feel comfortable before proceeding. The goal by end of week is bars 1–16.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Daily sight reading practice.</strong> Every session, find one new piece or exercise you have not seen before. Read through it slowly, naming notes if needed. It does not matter how it sounds — what matters is the attempt. Sight reading improves only through regular exposure to new music.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="goals-section">
+      <h4>Weeks 9–10 Goals</h4>
+      <ul class="goal-list">
+        <li>Name any note in first position in under 3 seconds</li>
+        <li>Clap and count eighth note rhythms accurately with metronome</li>
+        <li>Play Perpetual Motion bars 1–16 at ♩=56 or faster</li>
+        <li>Sight-read a new simple piece (one you have never seen) each week</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ PHASE III ═══ -->
+<div class="phase-banner" data-roman="III" id="phase3">
+  <div class="phase-num">Phase Three · Weeks 11–18</div>
+  <h2>Classical Repertoire</h2>
+  <p class="phase-meta">Vibrato, third position, real classical pieces, and your first performance</p>
+</div>
+
+<!-- Week 11-13 -->
+<div class="week-card" id="w11">
+  <button class="week-toggle" onclick="toggleWeek(this)">
+    <div>
+      <div class="week-label-small">Weeks 11–13</div>
+      <div class="week-title-main">Vibrato Begins</div>
+      <div class="week-subtitle">Controlled oscillation · Arm vs wrist vibrato · Building gradually</div>
+    </div>
+    <div class="week-icon">+</div>
+  </button>
+  <div class="week-body">
+    <div class="overview-strip">
+      <div class="overview-item"><div class="ov-label">New Skill</div><div class="ov-value">Arm vibrato</div></div>
+      <div class="overview-item"><div class="ov-label">Timeline</div><div class="ov-value">3 weeks of gradual development</div></div>
+      <div class="overview-item"><div class="ov-label">New Piece</div><div class="ov-value">Handel Sonata No. 3, Adagio</div></div>
+      <div class="overview-item"><div class="ov-label">Daily Vibrato Time</div><div class="ov-value">10–15 minutes</div></div>
+    </div>
+    <div class="week-intro">
+      <p>Vibrato is the defining sound of the classical violin. It is a controlled oscillation of pitch that warms the tone and gives the instrument its distinctive singing quality. It cannot be rushed — it develops slowly over many weeks. These three weeks begin the process. You will not use vibrato in performance yet; you are simply training the motion until it becomes effortless.</p>
+    </div>
+    <div class="schedule-header"><h3>Daily Practice Schedule</h3><span>Click to expand</span></div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 0–15</div>
+        <div><div class="block-name">Scale & Technique Warm-Up</div><div class="block-tagline">Three scales + review of Perpetual Motion</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>D, A, and G major scales</strong> with two-note slurs at ♩=72. Then once through Perpetual Motion at a comfortable tempo. This should all feel like a warm-up now — relatively automatic. If anything still feels uncertain, spend extra time on it before adding new material.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 15–30</div>
+        <div><div class="block-name">Vibrato Development — The Full Method</div><div class="block-tagline">Week by week, this builds into the real thing</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Week 11 — The motion without the violin.</strong> Extend your left arm, hand open. Rock the entire lower arm (forearm) back and forth rhythmically — forward toward you, then away. The wrist is loose and follows. Do this for 1 minute. The motion is slow and wide. This is arm vibrato in embryonic form.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Week 11 — The motion on the violin, not bowing.</strong> Place finger 2 on the A string in normal first position. Without bowing, rock the arm slowly forward and back so the fingertip rolls slightly. The pitch changes very slightly as the finger rolls — lower when rolled back (toward scroll), higher when rolled forward. You should be able to see your knuckle moving. Do 30 slow oscillations.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Week 12 — Bowing with vibrato motion.</strong> Now add the bow. Play a whole note (4 beats) on finger 2 on A string. While bowing, also perform the arm rocking motion. At first the two motions will interfere with each other — the bow arm will unconsciously speed up and slow down in response to the left arm. Keep the bow steady. The left arm rocks independently. This takes practice.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Week 13 — Increasing speed gradually.</strong> Start the rocking motion slowly (one rock per beat at ♩=60). Then increase to two rocks per beat. The goal eventually is around 5–6 oscillations per second for a moderate vibrato. Do not rush to speed — a slow, controlled vibrato is more musical than a fast, uncontrolled one.</span></li>
+          <li><span class="step-num">5</span><span class="step-text"><strong>The key rule: vibrato always rolls back from the pitch, not up above it.</strong> The finger should roll toward the scroll (lowering the pitch slightly) and return to the note. It does not go sharp — only flat and back. This is why vibrato sounds like a warm wavering rather than a pitch deviation.</span></li>
+        </ul>
+        <div class="callout-grid">
+          <div class="callout listen"><strong>Developing vibrato sounds like</strong>A gentle, even wavering in the pitch — like a singer warming their voice on a sustained note. Not jerky or irregular. Not too wide (sounds out of tune) or too narrow (inaudible).</div>
+          <div class="callout mistake"><strong>The "grip" vibrato</strong>Squeezing the neck of the violin during vibrato chokes the motion and tenses the hand. The thumb must remain relaxed throughout. If your hand cramps, stop, shake it out, and reduce the intensity of the motion.</div>
+        </div>
+        <div class="maestro-note">
+          <div class="mn-label">Maestro's Note on Patience</div>
+          <p>Vibrato is the skill that separates 3 months of violin from 6 months. It will not sound beautiful immediately. For 2–3 weeks it may sound like a tremor or a wobble. This is normal. Do not use it in your repertoire yet — practise it separately until it begins to flow naturally. Great vibrato takes 3–6 months to develop properly. You are beginning that journey today.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 30–58</div>
+        <div><div class="block-name">Handel Sonata No. 3 — Adagio Movement</div><div class="block-tagline">Your first real classical sonata — played slowly and beautifully</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Listen first.</strong> Search "Handel Violin Sonata No 3 Adagio" on YouTube. This piece moves slowly and expressively — it is all about tone and phrasing, not speed. This suits your current technique perfectly.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Find the sheet music.</strong> IMSLP.org (the free classical music PDF library) has all Handel sonatas free. Download and print the violin part.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Learn phrase by phrase.</strong> The Adagio is approximately 16 bars. Learn 4 bars per session. Name every note before playing it. Check tuning with the tuner on any note that sounds uncertain. Play each phrase 5 times before moving to the next.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Apply your dynamics.</strong> This is not scale practice — this is music. Find the rises and falls of the melody and reflect them dynamically. Where does the phrase peak? Make it sing there. Where does it settle? Ease back.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="goals-section">
+      <h4>Weeks 11–13 Goals</h4>
+      <ul class="goal-list">
+        <li>Produce a controlled vibrato motion on fingers 1 and 2 (not yet in performance — just the motion)</li>
+        <li>Bow simultaneously with the vibrato arm motion without the bow stuttering</li>
+        <li>Learn the complete Handel Adagio from beginning to end at a slow, musical tempo</li>
+        <li>Use IMSLP.org independently to find and print sheet music</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Week 14-16 -->
+<div class="week-card" id="w14">
+  <button class="week-toggle" onclick="toggleWeek(this)">
+    <div>
+      <div class="week-label-small">Weeks 14–16</div>
+      <div class="week-title-main">Third Position</div>
+      <div class="week-subtitle">Shifting the left hand · Higher notes · Bach Double Concerto Largo</div>
+    </div>
+    <div class="week-icon">+</div>
+  </button>
+  <div class="week-body">
+    <div class="overview-strip">
+      <div class="overview-item"><div class="ov-label">New Technique</div><div class="ov-value">Position shifting</div></div>
+      <div class="overview-item"><div class="ov-label">New Position</div><div class="ov-value">Third position</div></div>
+      <div class="overview-item"><div class="ov-label">Higher Notes</div><div class="ov-value">Up to D5 on E string</div></div>
+      <div class="overview-item"><div class="ov-label">New Piece</div><div class="ov-value">Bach Double Concerto, Largo</div></div>
+    </div>
+    <div class="week-intro">
+      <p>Until now, your left hand has stayed in "first position" — with your index finger near the scroll. Third position moves the entire hand up the fingerboard so your index finger now sits where your ring finger was. This unlocks higher notes and is used throughout all classical repertoire. Shifting between positions must feel smooth — like the hand glides, not jumps.</p>
+    </div>
+    <div class="schedule-header"><h3>Daily Practice Schedule</h3><span>Click to expand</span></div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 0–15</div>
+        <div><div class="block-name">Warm-Up & Vibrato Practice</div><div class="block-tagline">Scales + continued vibrato development</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>All three major scales</strong> at ♩=76. Increase tempo slightly. Notice how much more automatic the finger placements feel compared to Week 1. This is real progress.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>10 minutes of vibrato on sustained notes.</strong> By now you should be able to bow while vibrating. Play 4-beat notes on finger 2 on A, applying a slow vibrato. Try to increase the consistency — not faster, but more even. Every oscillation should be the same width and speed.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 15–35</div>
+        <div><div class="block-name">Third Position — Complete Method</div><div class="block-tagline">How to shift, where to land, and what to practise</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Understanding third position.</strong> In first position, finger 1 on the A string plays B. In third position, finger 1 on the A string plays D (a minor third higher). The entire hand moves up the fingerboard about 4–5 cm toward the bridge. The thumb moves with the hand — it does not stay behind.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>The shift motion.</strong> Place finger 1 in first position on the A string (note: B). Now, without pressing, let the finger slide smoothly up the string toward the bridge while your thumb slides along the side of the neck. Slide until finger 1 reaches D. Do not lift the finger during the shift — it glides along the string surface. Now press and bow — you should hear D.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Check the position.</strong> In third position, the side of your hand (the thumb side) may lightly touch the edge of the body of the violin. This is normal in third position. The thumb now rests against or near the neck-body join.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>The shift exercise.</strong> Play B (finger 1, first position) → slide up to D (finger 1, third position) → slide back to B. Repeat 10 times. Listen for smooth connection — no gap, no crunch. Then use the tuner to confirm your D in third position is in tune.</span></li>
+          <li><span class="step-num">5</span><span class="step-text"><strong>Third position scale fragment on A string.</strong> In third position: finger 1 = D, finger 2 = E, finger 3 = F#, finger 4 = G. Play these four notes up and down. Then shift back to first position and play the open A. Shift up again. Practise the shift itself as much as the notes in position.</span></li>
+        </ul>
+        <div class="callout-grid">
+          <div class="callout listen"><strong>A good shift sounds like</strong>A seamless connection between the note before the shift and the note after — as if the hand teleported silently. No audible glide or slide in the pitch.</div>
+          <div class="callout mistake"><strong>The audible portamento</strong>If you hear your finger sliding up the string (a rising swoosh), you are pressing too hard during the shift. The finger should glide with very light contact — almost floating — before pressing again at the destination.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 35–58</div>
+        <div><div class="block-name">Bach Double Concerto — Largo (Second Violin)</div><div class="block-tagline">One of the most beautiful melodies ever written for violin</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Listen to the piece.</strong> Search "Bach Double Violin Concerto Largo" — the slow middle movement. It is hauntingly beautiful. The two violin parts intertwine like a conversation. You will learn the simpler of the two parts (the second violin).</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Find the music.</strong> IMSLP.org — search "Bach BWV 1043." Download and print the second violin part.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>The Largo is mostly in first position.</strong> This is why it is ideal now — you know almost all the notes already. There are a few shifts, but you can play early phrases entirely in first position while your shifting develops.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Play with a drone.</strong> A "drone" is a sustained note played underneath your melody. Use a phone app (search "drone tone app") or have someone hold a sustained D on a keyboard. Playing against a reference pitch trains your intonation powerfully.</span></li>
+        </ul>
+        <div class="maestro-note">
+          <div class="mn-label">Maestro's Note</div>
+          <p>You are now learning Bach. Not a simplified version, not a paraphrase — actual Bach. This is one of the most performed concertos in the entire violin repertoire. The fact that you can approach it after 14 weeks is a testament to consistent practice. Play it with the reverence and joy it deserves.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="goals-section">
+      <h4>Weeks 14–16 Goals</h4>
+      <ul class="goal-list">
+        <li>Shift from first to third position and back with an inaudible slide</li>
+        <li>Know all notes of third position on the A string</li>
+        <li>Play the first 16 bars of the Bach Largo with musical phrasing</li>
+        <li>Apply early vibrato to long notes in the Handel — even if still developing</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Week 17-18 -->
+<div class="week-card" id="w17">
+  <button class="week-toggle" onclick="toggleWeek(this)">
+    <div>
+      <div class="week-label-small">Weeks 17–18</div>
+      <div class="week-title-main">Your First Performance</div>
+      <div class="week-subtitle">Polishing a piece · Performance psychology · Playing for another person</div>
+    </div>
+    <div class="week-icon">+</div>
+  </button>
+  <div class="week-body">
+    <div class="overview-strip">
+      <div class="overview-item"><div class="ov-label">Focus</div><div class="ov-value">Polishing & performing</div></div>
+      <div class="overview-item"><div class="ov-label">Technique</div><div class="ov-value">Memorisation, run-throughs</div></div>
+      <div class="overview-item"><div class="ov-label">Goal</div><div class="ov-value">Perform for one person</div></div>
+      <div class="overview-item"><div class="ov-label">Record</div><div class="ov-value">Video recording of performance</div></div>
+    </div>
+    <div class="week-intro">
+      <p>These two weeks have one purpose: preparing to share your music with another person. This is not optional — it is one of the most transformative experiences in musical development. Playing for an audience, even an audience of one, changes how you hear yourself and how you commit to the music. Choose one piece (Handel Adagio or Bach Largo) and bring it to performance readiness.</p>
+    </div>
+    <div class="schedule-header"><h3>Daily Practice Schedule</h3><span>Click to expand</span></div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 0–18</div>
+        <div><div class="block-name">Technical Warm-Up</div><div class="block-tagline">Scales, vibrato, one Ševčík bow exercise</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Three scales with varied bow strokes.</strong> D major with détaché, A major with two-note slurs, G major with four-note slurs. This builds the muscle memory needed across your whole technique.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>5 minutes of vibrato on sustained notes.</strong> On fingers 1, 2, and 3 on different strings. By now your vibrato should be becoming more consistent. Try applying it to a single phrase in your performance piece and notice how it transforms the sound.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>One Ševčík exercise.</strong> Open Ševčík Op. 1 to any early exercise. Play it slowly and accurately. Ševčík exercises are designed to build left hand independence and bow arm facility — even one exercise per day makes a measurable difference over weeks.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 18–42</div>
+        <div><div class="block-name">Performance Piece — Detail Work</div><div class="block-tagline">Isolating and solving every rough passage</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Play the whole piece through once.</strong> Do not stop for mistakes — continue to the end. This simulates performance conditions and shows you where the problems lie.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Identify the three hardest passages.</strong> These are the bars that made you hesitate, go out of tune, or lose confidence. Write them down (literally).</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Drill each hard passage at 50% speed.</strong> Take the hardest bar and play it 10 times in a row, very slowly, perfectly. Then 10 times at 70% speed. Then attempt it in context. This "chunking and drilling" technique is used by professional musicians at every level.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Join passages together.</strong> Once a difficult bar is solid, always practise it with the bar before and the bar after. Passages fall apart at joints — this prevents that.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 42–58</div>
+        <div><div class="block-name">Full Run-Through & Recording</div><div class="block-tagline">Playing from beginning to end as a performer, not a practiser</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Set up a recording device.</strong> Use your phone, propped up on a music stand or against a stack of books. A camera that captures both audio and video is best. You should be able to see your bow arm and left hand.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Take a breath before you begin.</strong> Stand (or sit) in correct posture. Breathe in deeply. Start with intention. Do not apologise with your body language before you play — stand as if you are about to give someone a gift.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Play through without stopping.</strong> No matter what happens — wrong note, squeaky string, forgotten passage — keep going. A performer who recovers from mistakes is more impressive than one who never makes them, because recovery requires genuine musicianship.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Watch the recording.</strong> This is uncomfortable but essential. Watch with these specific questions: Is my posture correct throughout? Does the bow stay straight? Are my dynamics visible in how the bow moves? Does the music have shape — rises and falls — or is it flat in dynamic?</span></li>
+        </ul>
+        <div class="maestro-note">
+          <div class="mn-label">On Performance and Nerves</div>
+          <p>Playing for someone — even a friend or family member — will trigger nerves. Your hands may shake. Your mind may blank on passages you know perfectly. This is completely normal and happens to professional soloists before every major concert. The only cure is repeated exposure. Each performance — however small — makes the next one less frightening. Today's performance matters more than you know.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="goals-section">
+      <h4>Weeks 17–18 Goals</h4>
+      <ul class="goal-list">
+        <li>Play your chosen piece from memory or with music — completely, without stopping</li>
+        <li>Record a video run-through and watch it critically</li>
+        <li>Perform for at least one other person — a friend, family member, or partner</li>
+        <li>Identify three things you are proud of and one thing to improve for next time</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ PHASE IV ═══ -->
+<div class="phase-banner" data-roman="IV" id="phase4">
+  <div class="phase-num">Phase Four · Weeks 19–24</div>
+  <h2>Advancing the Craft</h2>
+  <p class="phase-meta">Double stops, spiccato, Vivaldi, and your six-month milestone</p>
+</div>
+
+<!-- Week 19-21 -->
+<div class="week-card" id="w19">
+  <button class="week-toggle" onclick="toggleWeek(this)">
+    <div>
+      <div class="week-label-small">Weeks 19–21</div>
+      <div class="week-title-main">Double Stops & Spiccato</div>
+      <div class="week-subtitle">Two notes at once · Bouncing bow · Vivaldi Concerto begins</div>
+    </div>
+    <div class="week-icon">+</div>
+  </button>
+  <div class="week-body">
+    <div class="overview-strip">
+      <div class="overview-item"><div class="ov-label">New Technique 1</div><div class="ov-value">Double stops (two notes)</div></div>
+      <div class="overview-item"><div class="ov-label">New Technique 2</div><div class="ov-value">Spiccato bow stroke</div></div>
+      <div class="overview-item"><div class="ov-label">New Piece</div><div class="ov-value">Vivaldi Op. 3 No. 6, Mvt. 1</div></div>
+      <div class="overview-item"><div class="ov-label">Metronome</div><div class="ov-value">♩ = 80–96</div></div>
+    </div>
+    <div class="week-intro">
+      <p>You now enter genuinely intermediate technique territory. Double stops (playing two strings simultaneously) create richness and harmony and appear in almost all advanced classical music. Spiccato — a naturally bouncing bow stroke — is the sparkling technique you hear in Vivaldi, Handel, and countless concerto passages. Both require patience to develop but are deeply rewarding when they work.</p>
+    </div>
+    <div class="schedule-header"><h3>Daily Practice Schedule</h3><span>Click to expand</span></div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 0–18</div>
+        <div><div class="block-name">Full Technical Warm-Up</div><div class="block-tagline">Scales, vibrato, shifting, and Ševčík</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Three scales with four-note slurs at ♩=80.</strong> Pushing the tempo on scales is valuable — it reveals any weaknesses in left hand frame or bow distribution.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Vibrato on each finger in turn.</strong> 30 seconds each on fingers 1, 2, 3, 4. By now vibrato should feel somewhat natural. The goal is to make it automatic — the mark of a truly developed vibrato is one you apply without consciously thinking about the motion.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Practice one position shift</strong> (first to third on A string). 10 shifts, checking that each landing is in tune.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 18–35</div>
+        <div><div class="block-name">Double Stops — Playing Two Strings at Once</div><div class="block-tagline">The bow sits on two strings simultaneously; both notes sound together</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>What are double stops?</strong> When the bow sits between two strings and contacts both simultaneously, you sound two notes at once. This is called a double stop. It produces harmony — the violin becomes its own chord instrument. You hear double stops throughout Bach, Handel, and nearly all concertos.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>The bow angle for double stops.</strong> Normally, the bow sits on one string. For double stops, you flatten the bow angle slightly so the hair contacts both adjacent strings at once. The bow must be in the "groove" between the two strings. Too much tilt = only one string sounds. Not enough = scratchy, forced sound.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Start with open strings.</strong> Place the bow between D and A strings and bow both simultaneously — no left hand fingers. You should hear a D and an A together (a perfect fifth). This is the easiest double stop and the one that sounds best on violin. Practise producing a clean, equal tone on both strings for 5 minutes.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>D major scale in thirds.</strong> This is the standard double stop exercise: play two notes of the D major scale simultaneously, a third apart. You will need to place fingers on both strings at once. Start slowly — finger placement and bow angle must both be correct. Use the tuner for each pair.</span></li>
+        </ul>
+        <div class="callout-grid">
+          <div class="callout listen"><strong>Good double stops sound like</strong>Two clear, equally matched tones. Neither string dominates. When the interval is correct (in tune), the two notes blend beautifully — you may even hear a slight "ring" as the harmonics align.</div>
+          <div class="callout mistake"><strong>Unequal strings</strong>One note is much louder or clearer than the other. Usually the bow is tilted too far toward one string. Centre it between the two.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 35–46</div>
+        <div><div class="block-name">Spiccato — The Bouncing Bow Stroke</div><div class="block-tagline">Light, springy strokes that leave the string between notes</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>What is spiccato?</strong> Unlike détaché (where the bow stays on the string), spiccato allows the bow to bounce off the string between notes. The result is a light, sparkling, separated sound. You hear it in the fast movements of Vivaldi and Mozart concertos — those rapid, bouncy passages are all spiccato.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Find the balance point.</strong> Hold the bow and tap its hair lightly on the open A string at different points along the bow's length. Near the middle, the bow will naturally bounce more than near the frog or tip. Find the point where the bow bounces most freely. This is your spiccato zone — usually slightly below the middle.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>The spiccato motion.</strong> Use a small, slightly downward angled stroke at the spiccato zone. The bow touches the string, sounds the note, and the natural elasticity of the bow stick lifts it back off. You are not consciously lifting the bow — you are letting the stick's spring do the work. The motion feels like a small arc: down to the string, then up off it.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Practice on open strings at ♩=80 in eighth notes.</strong> Spiccato at first sounds uneven and inconsistent. This is normal. The key is to use a relaxed wrist and let the bow bounce naturally — any tension kills the bounce. Over days and weeks, the stroke becomes even and controlled.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 46–58</div>
+        <div><div class="block-name">Vivaldi Concerto Op. 3 No. 6 — First Movement</div><div class="block-tagline">Baroque fire — fast, brilliant, and entirely within your reach</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Listen first.</strong> Search "Vivaldi Op 3 No 6 violin" — the first movement (Allegro). It is energetic, bright, and rhythmically driving. The soloist plays running passages and dramatic leaps. This will be your six-month milestone piece.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Find the music.</strong> IMSLP.org, search "Vivaldi Op 3 No 6." Download the solo violin part.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Start at ♩=60 regardless of the tempo marking.</strong> The marked tempo may be ♩=120 or faster. Ignore that. Learn the notes first at half tempo. Speed comes from accuracy, never the reverse.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Identify the technical challenges.</strong> The Vivaldi first movement contains fast scale runs (use your scale technique), string crossings (use your arm level changes), and passages that benefit from spiccato. As you learn each passage, identify which technique it requires and practise that technique in isolation first.</span></li>
+        </ul>
+        <div class="maestro-note">
+          <div class="mn-label">Maestro's Note</div>
+          <p>The Vivaldi A minor concerto is performed by advanced students, university students, and professionals alike. It is a piece with depth at every level. At your current skill level, you will play a clean, slower version — and it will be genuinely beautiful. Do not compare your speed to recordings. Compare your music-making to your own previous best.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="goals-section">
+      <h4>Weeks 19–21 Goals</h4>
+      <ul class="goal-list">
+        <li>Play D major scale in thirds (double stops) in tune</li>
+        <li>Sound open D+A double stop cleanly for 8 consecutive bow strokes</li>
+        <li>Produce a spiccato bounce consistently at the bow's natural bounce point</li>
+        <li>Learn the exposition (opening section) of Vivaldi Op. 3 No. 6 at slow tempo</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Week 22-24 -->
+<div class="week-card" id="w22">
+  <button class="week-toggle" onclick="toggleWeek(this)">
+    <div>
+      <div class="week-label-small">Weeks 22–24</div>
+      <div class="week-title-main">The Six-Month Milestone</div>
+      <div class="week-subtitle">Vivaldi complete · Final performance · The road that continues</div>
+    </div>
+    <div class="week-icon">+</div>
+  </button>
+  <div class="week-body">
+    <div class="overview-strip">
+      <div class="overview-item"><div class="ov-label">Goal</div><div class="ov-value">Vivaldi — full movement</div></div>
+      <div class="overview-item"><div class="ov-label">Performance</div><div class="ov-value">Record + share with someone</div></div>
+      <div class="overview-item"><div class="ov-label">Reflection</div><div class="ov-value">Plan next 3 months</div></div>
+      <div class="overview-item"><div class="ov-label">Consider</div><div class="ov-value">Finding a live teacher</div></div>
+    </div>
+    <div class="week-intro">
+      <p>These final three weeks are about synthesis. You have learned an extraordinary amount — posture, bow hold, four fingers in first position, three major scales, vibrato, third position, double stops, spiccato, and a growing repertoire of real classical pieces. Now you bring it all together in one final milestone: a complete performance of the Vivaldi concerto movement you have been preparing.</p>
+    </div>
+    <div class="schedule-header"><h3>Daily Practice Schedule</h3><span>Click to expand</span></div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 0–20</div>
+        <div><div class="block-name">Complete Technical Warm-Up</div><div class="block-tagline">Everything you know — scales, vibrato, shifting, bow strokes</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>D, A, G major scales</strong> — each with a different bow stroke: détaché, slurs, then spiccato (on open strings only if full spiccato scale is not yet solid).</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Vibrato on all four fingers.</strong> 30 seconds each. Check that it flows without conscious effort on at least fingers 1 and 2.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>5 position shifts</strong> (first to third and back, with tuner confirmation).</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>One Ševčík exercise</strong> of your choice. By now you should have worked through several from Op. 1. Choose one that addresses a weakness you have identified.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 20–48</div>
+        <div><div class="block-name">Vivaldi — Complete Movement Preparation</div><div class="block-tagline">Detail work, slow drilling, and full run-throughs</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Week 22: Final section learning.</strong> Any passages not yet learned from the movement — learn them this week. Even if slow and uncertain, get through every bar at least once per day.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Week 23: Drilling difficult passages.</strong> Identify the 3–4 hardest passages. Drill each 15 times at 60% tempo. Then 10 times at 80% tempo. Mark them in your score. These are your priority each session.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Week 24: Performance preparation.</strong> Full run-throughs only — no stopping to fix passages. Play as a performer. Record every run-through. Listen back. Notice improvement from day to day. Perform for someone by the end of this week.</span></li>
+          <li><span class="step-num">4</span><span class="step-text"><strong>Apply vibrato wherever the note is long enough.</strong> Any note lasting a half beat or more can receive vibrato. This transforms the Vivaldi from a student exercise into something approaching a real performance.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="practice-block" onclick="toggleBlock(this)">
+      <div class="block-header">
+        <div class="block-time">Min 48–60</div>
+        <div><div class="block-name">Sight Reading & Planning Forward</div><div class="block-tagline">A new piece each week + writing your next 3 months</div></div>
+        <div class="block-expand">▾</div>
+      </div>
+      <div class="block-detail">
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Sight read a new piece.</strong> From IMSLP, find something you have never played: a Handel sonata movement, a Bach Bourrée, or a simple Mozart sonata excerpt. Read it through once at slow tempo — naming any notes you don't know by memory. Musical independence means being able to approach unknown music.</span></li>
+          <li><span class="step-num">2</span><span class="step-text"><strong>Write your next 3-month plan.</strong> You have finished this structured course. Now ask yourself: What do I want to learn next? What technical weaknesses remain? Do I want to deepen vibrato, work on higher positions (fifth position, thumb position), or learn a specific piece? Write it down. Planning is how progress continues after structured courses end.</span></li>
+          <li><span class="step-num">3</span><span class="step-text"><strong>Seriously consider a teacher.</strong> At this level — 6 months in, with real technique established — a live teacher can transform your progress. They can see and hear things no course or video can detect. A lesson every two weeks is sufficient to maintain momentum. Even one lesson per month to check posture and technique prevents bad habits from calcifying.</span></li>
+        </ul>
+        <div class="maestro-note">
+          <div class="mn-label">A Final Note — The Journey You Have Made</div>
+          <p>Six months ago, you had never held a bow. You had never produced a violin tone. Today, you play Vivaldi. You have developed a vibrato, shifted positions, learned to read music, and performed for another person. This is not beginner work anymore — you are a violin player. The next six months will take you further than the first six did, because the foundation is solid. Stay curious. Stay patient. Stay in love with the sound.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="goals-section">
+      <h4>Weeks 22–24 — Final Goals</h4>
+      <ul class="goal-list">
+        <li>Play the complete first movement of Vivaldi Op. 3 No. 6 from beginning to end without stopping</li>
+        <li>Record a final video performance — your six-month document</li>
+        <li>Perform the Vivaldi for at least one person</li>
+        <li>Write a 3-month plan for continued learning</li>
+        <li>Research local violin teachers or online teaching platforms</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- MILESTONES -->
+<div class="milestones-section" id="milestones">
+  <h2>Progress Tracker</h2>
+  <p>Check each milestone as you achieve it throughout the course.</p>
+  <div class="milestone-grid">
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Produced first clear open string tone <small>Week 1</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Held violin without left hand for 30 sec <small>Week 1</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Correct bow hold — no white knuckles <small>Week 1</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Finger 1 in tune on A string (note: B) <small>Week 2</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">First melody played (Mary Had a Little Lamb) <small>Week 2</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">D major scale, one octave at ♩=50 <small>Week 3</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">All four fingers placed in tune <small>Week 3</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">First slurred notes performed cleanly <small>Week 4</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Twinkle Variation A played rhythmically <small>Week 4</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">A major and G major scales learned <small>Week 5–6</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Clean string crossings — no bumping <small>Week 5–6</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Minuet in G played from start to finish <small>Week 7–8</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Three dynamic levels used in one piece <small>Week 7–8</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">All first-position notes named in under 3 sec <small>Week 9–10</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Eighth notes played steadily at ♩=60 <small>Week 9–10</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Vibrato motion learned (bowing + arm rock) <small>Week 11–13</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Handel Adagio learned completely <small>Week 11–13</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Third position shift — inaudible and in tune <small>Week 14–16</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Bach Double Concerto Largo — 16 bars <small>Week 14–16</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">First performance for another person <small>Week 17–18</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">First recording watched and assessed <small>Week 17–18</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Double stops — D+A open strings clean <small>Week 19–21</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Spiccato bounce at bow's natural point <small>Week 19–21</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Vivaldi Op. 3 No. 6 — complete movement <small>Week 22–24</small></div></label>
+    <label class="ms-item"><input type="checkbox"><div class="ms-text">Six-month performance recorded and shared <small>Week 24</small></div></label>
+  </div>
+</div>
+
+</div><!-- end .content -->
+</div><!-- end .main -->
+
+<footer style="margin-left:230px; padding:60px 70px; border-top:1px solid var(--border); text-align:center;">
+  <p class="footer-quote">"The violinist is that peculiarly human phenomenon distilled to a rare purity — half tiger, half poet."</p>
+  <small>— Yehudi Menuhin &nbsp;·&nbsp; Begin again tomorrow.</small>
+</footer>
+
+<script>
+function toggleWeek(btn) {
+  const card = btn.closest('.week-card');
+  card.classList.toggle('open');
+}
+
+function toggleBlock(block) {
+  block.classList.toggle('open');
+}
+
+// Sidebar active link highlighting
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('[id]');
+
+function updateActive() {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY + 140 >= s.offsetTop) current = s.id;
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+}
+
+window.addEventListener('scroll', updateActive);
+updateActive();
+</script>
+</body>
+</html>
